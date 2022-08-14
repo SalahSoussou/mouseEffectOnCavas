@@ -5,28 +5,22 @@ const ctx = cnv.getContext("2d");
 cnv.width = window.innerWidth;
 cnv.height = window.innerHeight;
 const pArray = [];
+// drawing coordinates x & y
 let x = undefined;
 let y = undefined;
-const color = `hsl(${Math.random() * 360}, 50%, 50%)`;
+
+const color = `hsl(${Math.random() * 255}, 50%, 50%)`;
 window.addEventListener("resize", function () {
   cnv.width = window.innerWidth;
   cnv.height = window.innerHeight;
 });
-// const mouse = {
-//   x: undefined,
-//   y: undefined,
-// };
 
-// window.addEventListener("click", function (e) {
-//   mouse.x = e.x;
-//   mouse.y = e.y;
-// });
 let grad = 0;
 window.addEventListener("mousemove", function (e) {
   x = e.clientX;
   y = e.clientY;
   grad += 5;
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 2; i++) {
     pArray.push(new Particle());
   }
 });
@@ -34,7 +28,7 @@ window.addEventListener("click", function (e) {
   x = e.clientX;
   y = e.clientY;
 
-  for (let i = 0; i < 15; i++) {
+  for (let i = 0; i < 50; i++) {
     pArray.push(new Particle());
   }
 });
@@ -47,7 +41,7 @@ class Particle {
     this.size = Math.random() * 15 + 1;
     this.speedX = Math.random() * 3 - 1.5;
     this.speedY = Math.random() * 3 - 1.5;
-    this.color = `hsl(${grad}, 100%, 50%)`;
+    this.color = `hsl(${Math.random() * 255}, 100%, 50%)`;
   }
   update() {
     this.x += this.speedX * 2;
